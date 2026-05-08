@@ -1,0 +1,130 @@
+﻿<Page x:Class="LangSpace.Views.Pages.CardEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="800"
+      Title="CardEditPage"
+      Background="#F5F5F5"
+      WindowTitle="Работа с карточкой">
+
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" 
+                Width="80" 
+                Height="80" 
+                CornerRadius="40"
+                Background="#EEE9FD"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,30">
+            <materialDesign:PackIcon Kind="CardTextOutline" 
+                                     Width="40" 
+                                     Height="40" 
+                                     Foreground="#7D56EB"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"/>
+        </Border>
+
+        <TextBlock Grid.Row="1" 
+                   x:Name="tbTitle"
+                   Text="Создать карточку" 
+                   FontFamily="{DynamicResource BloggerBold}" 
+                   FontSize="44" 
+                   Foreground="#333333"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="2" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    Width="500">
+            <TextBox x:Name="tbFrontText" 
+                     materialDesign:HintAssist.Hint="Слово"
+                     Margin="0,0,0,20"
+                     FontSize="28"
+                     Height="65"/>
+            <TextBox x:Name="tbBackText" 
+                     materialDesign:HintAssist.Hint="Перевод"
+                     Margin="0,0,0,20"
+                     FontSize="28"
+                     Height="65"/>
+            <ComboBox x:Name="cmbTheme" 
+                      materialDesign:HintAssist.Hint="Выберите тему"
+                      Margin="0,0,0,20"
+                      FontSize="22"
+                      Height="55"/>
+            <ComboBox x:Name="cmbLevel" 
+                      materialDesign:HintAssist.Hint="Выберите уровень"
+                      Margin="0,0,0,30"
+                      FontSize="22"
+                      Height="55"/>
+            <CheckBox x:Name="cbIsPrivate" 
+                      Style="{StaticResource CustomCheckBoxStyle}"
+                      Content="Только для меня"
+                      Margin="0,10,0,30"
+                      FontSize="24"
+                      FontFamily="{DynamicResource ManropeMedium}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center"
+                    Margin="0,-10,0,30">
+            <Button x:Name="btnSave" 
+                    Content="Сохранить"
+                    Width="180"
+                    Height="50"
+                    Margin="0,0,15,0"
+                    Background="#7D56EB"
+                    Foreground="White"
+                    FontFamily="{DynamicResource ManropeBold}"
+                    FontSize="22"
+                    Cursor="Hand"
+                    BorderThickness="0"
+                    Click="btnSave_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="25"
+                                BorderThickness="0">
+                            <ContentPresenter Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button x:Name="btnCancel"
+                    Content="Отмена"
+                    Width="180" 
+                    Height="50"
+                    Background="#D2C4FB"
+                    Foreground="#7D56EB"
+                    FontSize="22"
+                    FontFamily="{DynamicResource ManropeBold}"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Click="btnCancel_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="25"
+                                BorderThickness="0">
+                            <ContentPresenter Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

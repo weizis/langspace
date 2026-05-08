@@ -1,0 +1,354 @@
+﻿<Page x:Class="LangSpace.Views.Pages.DashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:LangSpace.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1050" d:DesignWidth="1536"
+      Title="DashboardPage"
+      Background="#F5F5F5"
+      Width="1536"
+      Height="1080" Loaded="Page_Loaded">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="60" HorizontalAlignment="Center" Width="1420">
+            <TextBlock x:Name="WelcomeText" 
+                       Text="Добро пожаловать," 
+                       FontFamily="{DynamicResource BloggerBold}" 
+                       FontSize="50" 
+                       Foreground="#333333"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,15"/>
+            <TextBlock Text="LangSpace — ваш персональный помощник в изучении английского языка. Учите слова, осваивайте грамматику и отслеживайте свой прогресс каждый день!"
+                       FontFamily="{DynamicResource ManropeRegular}" 
+                       FontSize="22" 
+                       Foreground="#666666"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap"
+                       Width="1000"
+                       Margin="0,0,0,40"/>
+
+            <Grid Margin="0,0,0,40" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" 
+                    x:Name="btnNewNote" Click="btnNewNote_Click"
+                    Width="460"
+                    Height="130"
+                    Background="#A085EA"
+                    Foreground="White"
+                    FontSize="30"
+                    FontFamily="{DynamicResource BloggerMedium}"
+                    Margin="0,0,15,0"
+                    BorderThickness="0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                CornerRadius="25"
+                                BorderThickness="0">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Image Source="/Images/new_note.png" Width="100" Height="100" Margin="15,0,15,0"/>
+                                    <TextBlock Text="Новая заметка" 
+                                       FontFamily="{DynamicResource BloggerMedium}"
+                                       FontSize="32"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Grid.Column="1" 
+                    x:Name="btnLevelTest" 
+                    Width="460"
+                    Height="130" 
+                    Click="btnLevelTest_Click"
+                    Background="#A085EA"
+                    Foreground="White"
+                    FontSize="30"
+                    FontFamily="{DynamicResource BloggerMedium}"
+                    Margin="0,0,15,0"
+                    BorderThickness="0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                CornerRadius="25"
+                                BorderThickness="0">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Image Source="/Images/create_collection.png" Width="100" Height="100" Margin="15,0,15,0"/>
+                                    <StackPanel Margin="0 10 0 0">
+                                        <TextBlock Text="Проверить" 
+                                           FontFamily="{DynamicResource BloggerMedium}"
+                                           FontSize="32" 
+                                           Foreground="White"
+                                           VerticalAlignment="Center"/>
+                                        <TextBlock Text="уровень языка" 
+                                           FontFamily="{DynamicResource BloggerMedium}"
+                                           FontSize="32"
+                                           Foreground="White"
+                                           VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Grid.Column="2" 
+                    x:Name="btnRepeatGrammar" Click="btnRepeatGrammar_Click"
+                    Width="460"
+                    Height="130"
+                    Background="#A085EA"
+                    Foreground="White"
+                    FontSize="24"
+                    Margin="0,0,0,0"
+                    FontFamily="{DynamicResource BloggerMedium}"
+                    BorderThickness="0">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                CornerRadius="25"
+                                BorderThickness="0">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Image Source="/Images/check_grammar.png" Width="100" Height="100" Margin="15,0,10,0"/>
+                                    <TextBlock Text="Повторить грамматику" 
+                                       FontFamily="{DynamicResource BloggerMedium}"
+                                       FontSize="32"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" 
+                        Background="#EEE9FD" 
+                        CornerRadius="30" 
+                        Padding="30" 
+                        Width="460"
+                        Height="500"
+                        Margin="0,0,20,0">
+                    <StackPanel>
+                        <Grid HorizontalAlignment="Center" Margin="0,0,0,20">
+                            <Border Width="200" Height="200" CornerRadius="100" Background="#7D56EB">
+                                <Image x:Name="imgAvatar" 
+                                       Width="200" 
+                                       Height="200" 
+                                       Stretch="UniformToFill"
+                                       Source="/Images/user.png"/>
+                            </Border>
+                        </Grid>
+                        <TextBlock x:Name="UserName" 
+                                   Text="Анастасия Михеева" 
+                                   FontFamily="{DynamicResource BloggerBold}" 
+                                   FontSize="36" 
+                                   Foreground="#333333"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,5"/>
+                        <TextBlock x:Name="UserLogin" 
+                                   Text="@username" 
+                                   FontFamily="{DynamicResource ManropeMedium}" 
+                                   FontSize="22" 
+                                   Foreground="#7D56EB"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,20"/>
+                        <Border Background="#7D56EB" 
+                                CornerRadius="25" 
+                                Padding="12,5" 
+                                Width="120"
+                                HorizontalAlignment="Center"
+                                Margin="0,0,0,20">
+                            <TextBlock x:Name="UserLevel" 
+                                       Text="A1" 
+                                       FontFamily="{DynamicResource ManropeBold}" 
+                                       FontSize="22" 
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"/>
+                        </Border>
+                        <TextBlock x:Name="UserEmail" 
+                                   Text="email@example.com" 
+                                   FontFamily="{DynamicResource ManropeRegular}" 
+                                   FontSize="20" 
+                                   Foreground="#666666"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" 
+                        Background="#EEE9FD" 
+                        CornerRadius="30" 
+                        Padding="30" 
+                        Width="460"
+                        Height="500"
+                        Margin="0,0,20,0">
+                    <StackPanel>
+                        <TextBlock Text="Моя статистика" 
+                                   FontFamily="{DynamicResource BloggerBold}" 
+                                   FontSize="36" 
+                                   Foreground="#333333"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,25"/>
+
+                        <Grid Margin="0,20,0,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="" FontSize="24" Margin="0,0,15,0"/>
+                            <TextBlock x:Name="TotalTests" Grid.Column="1" 
+                                       Text="Пройдено тестов: 0" 
+                                       FontFamily="{DynamicResource ManropeMedium}" 
+                                       FontSize="24" 
+                                       Foreground="#333333"/>
+                        </Grid>
+
+                        <Grid Margin="0,0,0,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="" FontSize="24" Margin="0,0,15,0"/>
+                            <TextBlock x:Name="AvgScore" Grid.Column="1" 
+                                       Text="Средний результат: 0%" 
+                                       FontFamily="{DynamicResource ManropeMedium}" 
+                                       FontSize="24" 
+                                       Foreground="#333333"/>
+                        </Grid>
+                        <Grid Margin="0,0,0,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="" FontSize="24" Margin="0,0,15,0"/>
+                            <TextBlock x:Name="TodayStats" Grid.Column="1" 
+                                       Text="Сегодня: 0 тестов" 
+                                       FontFamily="{DynamicResource ManropeMedium}" 
+                                       FontSize="24" 
+                                       Foreground="#333333"/>
+                        </Grid>
+                        <Grid Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="" FontSize="24" Margin="0,0,15,0"/>
+                            <TextBlock x:Name="Streak" Grid.Column="1" 
+                                       Text="Дней подряд: 0" 
+                                       FontFamily="{DynamicResource ManropeMedium}" 
+                                       FontSize="24" FontWeight="Bold" 
+                                       Foreground="#FF9800"/>
+                        </Grid>
+                        <Border BorderBrush="#643BD7"
+                                BorderThickness="2" ClipToBounds="True"
+                                Background="#DFD4FF"
+                                Width="380" 
+                                Height="35" 
+                                CornerRadius="15" 
+                                Margin="0,40,0,10">
+                            <Border x:Name="ProgressFill" 
+                                    Background="#7D56EB" 
+                                    Width="0"  
+                                    Height="26"
+                                    CornerRadius="13"
+                                    HorizontalAlignment="Left"
+                                    Margin="2,2,0,2"/>
+                        </Border>
+                        <TextBlock x:Name="GoalText" 
+                                   Text="Цель на сегодня: 0 / 0" 
+                                   FontFamily="{DynamicResource ManropeMedium}" 
+                                   FontSize="18" 
+                                   Foreground="#666666"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="GoalStatusText" 
+           Text="" 
+           FontFamily="{DynamicResource ManropeBold}" 
+           FontSize="16" 
+           HorizontalAlignment="Center"
+           Margin="0,10,0,0"
+           Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2" 
+                        Background="#EEE9FD" 
+                        CornerRadius="30" 
+                        Padding="30" 
+                        Width="460"
+                        Height="500">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" 
+                                   Text="Интересный факт" 
+                                   FontFamily="{DynamicResource BloggerBold}" 
+                                   FontSize="36" 
+                                   Foreground="#333333"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,30"/>
+
+                        <StackPanel Grid.Row="1">
+                            <materialDesign:PackIcon Kind="LightbulbOn" 
+                                                     Width="60" 
+                                                     Height="60" 
+                                                     Foreground="#7D56EB"
+                                                     HorizontalAlignment="Center"
+                                                     Margin="0,0,0,20"/>
+                            <TextBlock x:Name="FunFact" 
+                                       Text="Английский язык — официальный язык международного общения. Его изучают более 1.5 миллиарда человек по всему миру!"
+                                       FontFamily="{DynamicResource ManropeRegular}" 
+                                       FontSize="22" 
+                                       Foreground="#333333" 
+                                       Width="350"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap"/>
+                        </StackPanel>
+
+                        <Button x:Name="btnNewFact" 
+                                Grid.Row="2"
+                                Content="Обновить"
+                                Width="200" 
+                                Height="45"
+                                Background="#7D56EB" 
+                                Foreground="White"
+                                FontFamily="{DynamicResource ManropeBold}" 
+                                FontSize="20" 
+                                Cursor="Hand"
+                                Click="btnNewFact_Click"
+                                HorizontalAlignment="Center"
+                                Margin="0,20,0,72">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="25"
+                                            BorderThickness="0">
+                                        <ContentPresenter Content="{TemplateBinding Content}" 
+                                                          VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

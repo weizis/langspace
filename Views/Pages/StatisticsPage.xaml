@@ -1,0 +1,185 @@
+﻿<Page x:Class="LangSpace.Views.Pages.StatisticsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="1050" d:DesignWidth="1540"
+      Title="StatisticsPage"
+      Background="#F5F5F5"
+      Loaded="Page_Loaded">
+
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" 
+                    Width="50" 
+                    Height="50" 
+                    CornerRadius="25"
+                    Background="Transparent"
+                    Cursor="Hand"
+                    MouseLeftButtonUp="BackButton_Click">
+                <materialDesign:PackIcon Kind="ArrowLeftThick" 
+                                         Width="30" 
+                                         Height="30" 
+                                         Foreground="#7D56EB"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"/>
+            </Border>
+            <TextBlock Grid.Column="1" 
+                       Text="Статистика" 
+                       FontFamily="{DynamicResource BloggerBold}" 
+                       FontSize="54" 
+                       Foreground="#333333"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="0,0,50,0"/>
+        </Grid>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" 
+                    Background="#EEE9FD" 
+                    CornerRadius="30" 
+                    Padding="35" 
+                    Width="450"
+                    Height="380"
+                    Margin="0,0,25,0">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Общая статистика" 
+                               FontFamily="{DynamicResource BloggerBold}" 
+                               FontSize="40" 
+                               Foreground="#333333"
+                               Margin="0,0,0,35"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="txtTotalTests" 
+                               Text="Пройдено тестов: 0" 
+                               FontFamily="{DynamicResource ManropeMedium}" 
+                               FontSize="26" 
+                               Foreground="#333333"
+                               Margin="0,0,0,20"/>
+                    <TextBlock x:Name="txtAvgScore" 
+                               Text="Средний результат: 0%" 
+                               FontFamily="{DynamicResource ManropeMedium}" 
+                               FontSize="26" 
+                               Foreground="#333333"
+                               Margin="0,0,0,20"/>
+                    <TextBlock x:Name="txtCardTests" 
+                               Text="Тесты по карточкам: 0" 
+                               FontFamily="{DynamicResource ManropeMedium}" 
+                               FontSize="26" 
+                               Foreground="#333333"
+                               Margin="0,0,0,20"/>
+                    <TextBlock x:Name="txtGrammarTests" 
+                               Text="Тесты по грамматике: 0" 
+                               FontFamily="{DynamicResource ManropeMedium}" 
+                               FontSize="26" 
+                               Foreground="#333333"/>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1" 
+                    Background="#EEE9FD" 
+                    CornerRadius="30" 
+                    Padding="35" 
+                    Width="450"
+                    Height="380"
+                    Margin="0,0,0,0">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Активность" 
+                               FontFamily="{DynamicResource BloggerBold}" 
+                               FontSize="40" 
+                               Foreground="#333333"
+                               Margin="0,-20,0,35"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="txtLastTest" 
+                               Text="Последний результат: " 
+                               FontFamily="{DynamicResource ManropeMedium}" 
+                               FontSize="22" 
+                               Foreground="#333333"
+                               Margin="0,0,0,20"/>
+                    <TextBlock x:Name="txtTodayTests" 
+                               Text="Сегодня: 0 тестов" 
+                               FontFamily="{DynamicResource ManropeMedium}" 
+                               FontSize="26" 
+                               Foreground="#333333"
+                               Margin="0,0,0,20"/>
+                    <TextBlock x:Name="txtStreak" 
+                               Text="Стрик: 0 дней" 
+                               FontFamily="{DynamicResource ManropeMedium}" 
+                               FontSize="26" 
+                               Foreground="#333333"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Border Grid.Row="2" 
+                Background="#EEE9FD" 
+                CornerRadius="30" 
+                Padding="35" 
+                Width="925"
+                Height="300"
+                HorizontalAlignment="Center">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Цели обучения" 
+                           FontFamily="{DynamicResource BloggerBold}" 
+                           FontSize="40" 
+                           Foreground="#333333"
+                           Margin="0,0,0,30"
+                           HorizontalAlignment="Center"/>
+
+                <Grid Margin="0,0,0,20" Width="800" HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" 
+                               Text="Карточек в день:" 
+                               FontFamily="{DynamicResource ManropeMedium}" 
+                               FontSize="26" 
+                               Foreground="#333333"/>
+                    <TextBlock x:Name="txtGoalCards" 
+                               Grid.Column="1"
+                               Text="0" 
+                               FontFamily="{DynamicResource ManropeBold}" 
+                               FontSize="26" 
+                               Foreground="#7D56EB"/>
+                </Grid>
+
+                <Border BorderBrush="#643BD7"
+                        BorderThickness="2"
+                        Background="#DFD4FF" ClipToBounds="True"
+                        Width="700" 
+                        Height="45" 
+                        CornerRadius="22" 
+                        Margin="0,0,0,20"
+                        HorizontalAlignment="Center">
+                    <Border x:Name="ProgressFill" 
+                            Background="#7D56EB" 
+                            Width="0"  
+                            Height="41"
+                            CornerRadius="20"
+                            HorizontalAlignment="Left"
+                            Margin="2,2,0,2"/>
+                </Border>
+                <TextBlock x:Name="txtGoalProgress" 
+                           Text="Сегодня: 0 из 0" 
+                           FontFamily="{DynamicResource ManropeMedium}" 
+                           FontSize="24" 
+                           Foreground="#666666"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

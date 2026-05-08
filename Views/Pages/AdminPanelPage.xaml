@@ -1,0 +1,256 @@
+﻿<Page x:Class="LangSpace.Views.Pages.AdminPanelPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="1050" d:DesignWidth="1536"
+      Title="AdminPanelPage"
+      Background="#F5F5F5"
+      Width="1536"
+      Height="1080">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="60" HorizontalAlignment="Center" Width="1420">
+
+            <TextBlock Text="Панель администратора" 
+                       FontFamily="{DynamicResource BloggerBold}" 
+                       FontSize="54" 
+                       Foreground="#333333"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,15"/>
+
+            <TextBlock Text="Управление пользователями системы: добавление, редактирование ролей, сброс паролей и удаление"
+                       FontFamily="{DynamicResource ManropeRegular}" 
+                       FontSize="24" 
+                       Foreground="#666666"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap"
+                       Width="1000"
+                       Margin="0,0,0,40"/>
+
+            <Grid Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="480"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0,0,25,0" VerticalAlignment="Top">
+                    <Border Background="White" 
+                            CornerRadius="30" 
+                            Padding="25">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Список пользователей" 
+                                       FontFamily="{DynamicResource BloggerBold}" 
+                                       FontSize="34" 
+                                       Foreground="#333333"
+                                       Margin="0,0,0,20"/>
+
+                            <DataGrid x:Name="UsersGrid" 
+                                      Grid.Row="1"
+                                      AutoGenerateColumns="False"
+                                      SelectionMode="Single"
+                                      SelectionUnit="FullRow"
+                                      IsReadOnly="True"
+                                      SelectionChanged="UsersGrid_SelectionChanged"
+                                      FontFamily="{DynamicResource ManropeRegular}"
+                                      FontSize="22"
+                                      RowHeight="50"
+                                      HeadersVisibility="Column"
+                                      BorderBrush="#E0E0E0"
+                                      BorderThickness="1"
+                                      Background="White"
+                                      AlternatingRowBackground="#F9F9F9"
+                                      Height="400">
+
+                                <DataGrid.Resources>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Background" Value="#7D56EB"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="FontFamily" Value="{DynamicResource ManropeBold}"/>
+                                        <Setter Property="FontSize" Value="24"/>
+                                        <Setter Property="Height" Value="45"/>
+                                       
+                                    </Style>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="Padding" Value="5"/>
+                                    </Style>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="Height" Value="50"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGrid.Resources>
+
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding IdUser}" Width="60"/>
+                                    <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="160"/>
+                                    <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="130"/>
+                                    <DataGridTextColumn Header="Логин" Binding="{Binding Username}" Width="120"/>
+                                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="270"/>
+                                    <DataGridTextColumn Header="Роль" Binding="{Binding IdRoleNavigation.RoleName}" Width="120"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+
+                    <StackPanel Orientation="Horizontal" Margin="5,15,0,0" HorizontalAlignment="Right">
+                        <Button x:Name="btnDelete" 
+                                Click="btnDelete_Click"
+                               
+                                Width="250"
+                                Height="60"
+                                Margin="0,0,15,0"
+                                Background="#DC3545"
+                                Foreground="White"
+                                FontSize="18"
+                                FontFamily="{DynamicResource BloggerMedium}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="25"
+                                            BorderThickness="0">
+                                        <TextBlock Text="Удалить" 
+                                                   FontFamily="{DynamicResource BloggerMedium}"
+                                                   FontSize="28"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button x:Name="btnAddUser" 
+                                Click="btnAddUser_Click"
+                                Width="250"
+                                Height="60"
+                                Background="#28A745"
+                                Foreground="White"
+                                FontSize="18"
+                                FontFamily="{DynamicResource BloggerMedium}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="25"
+                                            BorderThickness="0">
+                                        <TextBlock Text="Добавить" 
+                                                   FontFamily="{DynamicResource BloggerMedium}"
+                                                   FontSize="28"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+
+                <Border Grid.Column="1" 
+                        Background="#EEE9FD" 
+                        CornerRadius="30" 
+                        Padding="25"
+                        VerticalAlignment="Top">
+                    <StackPanel>
+                        <TextBlock Text="Управление пользователем" 
+                                   FontFamily="{DynamicResource BloggerBold}" 
+                                   FontSize="34" 
+                                   Foreground="#333333"
+                                   Margin="0,0,0,25"/>
+
+                        <Border Background="White" CornerRadius="15" Padding="15" Margin="0,0,0,15">
+                            <StackPanel>
+                                <TextBlock Text="ФИО:" Foreground="#666" FontSize="20" FontFamily="{DynamicResource ManropeMedium}"/>
+                                <TextBlock x:Name="txtFullName" Text=" " FontSize="20" FontFamily="{DynamicResource ManropeBold}" Foreground="#333333" Margin="0,5,0,15"/>
+
+                                <TextBlock Text="Логин:" Foreground="#666" FontSize="20" FontFamily="{DynamicResource ManropeMedium}"/>
+                                <TextBlock x:Name="txtUsername" Text=" " FontSize="20" FontFamily="{DynamicResource ManropeRegular}" Foreground="#333333" Margin="0,5,0,15"/>
+
+                                <TextBlock Text="Email:" Foreground="#666" FontSize="20" FontFamily="{DynamicResource ManropeMedium}"/>
+                                <TextBlock x:Name="txtEmail" Text=" " FontSize="20" FontFamily="{DynamicResource ManropeRegular}" Foreground="#333333" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <TextBlock Text="Роль:" Foreground="#666" FontSize="20" FontFamily="{DynamicResource ManropeMedium}" Margin="0,0,0,5"/>
+
+
+                        <ComboBox x:Name="cmbRoles" 
+          DisplayMemberPath="RoleName"
+          SelectedValuePath="IdRole"
+          Width="220" 
+          Height="50"
+          FontSize="18"
+          FontFamily="{DynamicResource ManropeRegular}"
+          materialDesign:HintAssist.Foreground="#7D56EB"
+          materialDesign:TextFieldAssist.UnderlineBrush="#7D56EB"
+          BorderBrush="#7D56EB"
+          BorderThickness="0 0 0 2"
+          Background="Transparent"
+        IsEnabled="True"
+          VerticalContentAlignment="Center"
+          Margin="0,-50,0,20"/>
+
+                        <Button x:Name="btnChangeRole" 
+                                Click="btnChangeRole_Click"
+                               
+                                Margin="0,5"
+                                Height="55"
+                                Background="#7D56EB"
+                                Foreground="White"
+                                FontSize="20"
+                                FontFamily="{DynamicResource BloggerMedium}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="25"
+                                            BorderThickness="0">
+                                        <TextBlock Text="Сменить роль" 
+                                                   FontFamily="{DynamicResource BloggerMedium}"
+                                                   FontSize="28"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button x:Name="btnResetPassword" 
+                                Click="btnResetPassword_Click"
+                                
+                                Margin="0,5"
+                                Height="55"
+                                Background="#FF9800"
+                                Foreground="White"
+                                FontSize="28"
+                                FontFamily="{DynamicResource BloggerMedium}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="25"
+                                            BorderThickness="0">
+                                        <TextBlock Text="Сброс пароля" 
+                                                   FontFamily="{DynamicResource BloggerMedium}"
+                                                   FontSize="28"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

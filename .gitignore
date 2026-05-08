@@ -1,0 +1,20 @@
+# Visual Studio
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+.vs/
+
+# Пакеты NuGet
+packages/
+
+# Файлы сборки
+*.exe
+*.dll
+*.pdb
+*.cache
+
+# Конфиденциальные данные (пароли, строка подключения)
+**/App.config
+**/appsettings.json

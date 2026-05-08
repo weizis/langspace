@@ -1,0 +1,91 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Fonts\Blogger_Sans-Bold.otf" />
+    <None Remove="Fonts\Blogger_Sans-Light.otf" />
+    <None Remove="Fonts\Blogger_Sans-Medium.otf" />
+    <None Remove="Fonts\Blogger_Sans.otf" />
+    <None Remove="Fonts\GlowSansTC-Normal-Bold.otf" />
+    <None Remove="Fonts\GlowSansTC-Normal-Light.otf" />
+    <None Remove="Fonts\GlowSansTC-Normal-Medium.otf" />
+    <None Remove="Fonts\GlowSansTC-Normal-Regular.otf" />
+    <None Remove="Fonts\Manrope-Bold.ttf" />
+    <None Remove="Fonts\Manrope-Medium.ttf" />
+    <None Remove="Fonts\Manrope-Regular.ttf" />
+    <None Remove="Images\add_image.png" />
+    <None Remove="Images\add_link.png" />
+    <None Remove="Images\add_note.png" />
+    <None Remove="Images\admin.png" />
+    <None Remove="Images\book.png" />
+    <None Remove="Images\check_grammar.png" />
+    <None Remove="Images\collection.png" />
+    <None Remove="Images\create_collection.png" />
+    <None Remove="Images\handshake.png" />
+    <None Remove="Images\home.png" />
+    <None Remove="Images\LangSpace.png" />
+    <None Remove="Images\log-out.png" />
+    <None Remove="Images\logo_white.png" />
+    <None Remove="Images\new_note.png" />
+    <None Remove="Images\settings.png" />
+    <None Remove="Images\stats.png" />
+    <None Remove="Images\user.png" />
+    <None Remove="Images\writing-tool.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="5.3.1" />
+    <PackageReference Include="MaterialDesignThemes.Wpf" Version="1.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.8" />
+	 
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\Blogger_Sans-Bold.otf" />
+    <Resource Include="Fonts\Blogger_Sans-Light.otf" />
+    <Resource Include="Fonts\Blogger_Sans-Medium.otf" />
+    <Resource Include="Fonts\Blogger_Sans.otf" />
+    <Resource Include="Fonts\GlowSansTC-Normal-Bold.otf" />
+    <Resource Include="Fonts\GlowSansTC-Normal-Light.otf" />
+    <Resource Include="Fonts\GlowSansTC-Normal-Medium.otf" />
+    <Resource Include="Fonts\GlowSansTC-Normal-Regular.otf" />
+    <Resource Include="Fonts\Manrope-Bold.ttf" />
+    <Resource Include="Fonts\Manrope-Medium.ttf" />
+    <Resource Include="Fonts\Manrope-Regular.ttf" />
+    <Resource Include="Images\add_image.png" />
+    <Resource Include="Images\add_link.png" />
+    <Resource Include="Images\add_note.png" />
+    <Resource Include="Images\admin.png" />
+    <Resource Include="Images\book.png" />
+    <Resource Include="Images\check_grammar.png" />
+    <Resource Include="Images\collection.png" />
+    <Resource Include="Images\create_collection.png" />
+    <Resource Include="Images\handshake.png" />
+    <Resource Include="Images\home.png" />
+    <Resource Include="Images\LangSpace.png" />
+    <Resource Include="Images\log-out.png" />
+    <Resource Include="Images\logo_white.png" />
+    <Resource Include="Images\new_note.png" />
+    <Resource Include="Images\settings.png" />
+    <Resource Include="Images\stats.png" />
+    <Resource Include="Images\user.png" />
+    <Resource Include="Images\writing-tool.png" />
+  </ItemGroup>
+
+</Project>

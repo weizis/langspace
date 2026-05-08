@@ -1,0 +1,161 @@
+﻿<Page x:Class="LangSpace.Views.Pages.GrammarEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="800"
+      Title="GrammarEditPage"
+      Background="#F5F5F5">
+
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,40,0,150">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" 
+                    Width="50" 
+                    Height="50" 
+                    CornerRadius="25"
+                    Background="Transparent"
+                    Cursor="Hand"
+                    MouseLeftButtonUp="BackButton_Click">
+                <materialDesign:PackIcon Kind="ArrowLeftThick" 
+                                         Width="30" 
+                                         Height="30" 
+                                         Foreground="#7D56EB"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"/>
+            </Border>
+            <TextBlock Grid.Column="1" 
+                       x:Name="tbTitle"
+                       Text="Добавить правило" 
+                       FontFamily="{DynamicResource BloggerBold}"   
+                       FontSize="44" 
+                       Foreground="#333333"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="0,0,50,0"/>
+        </Grid>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Width="700">
+
+            <TextBlock Text="Название правила" 
+                       FontFamily="{DynamicResource ManropeMedium}" 
+                       FontSize="18" 
+                       Foreground="#7D56EB"
+                       Margin="0,0,0,5"/>
+            <TextBox x:Name="tbRuleName"   
+                     Width="700"
+                     Height="50"
+                     FontSize="18"
+                     FontFamily="{DynamicResource ManropeRegular}"
+                     Background="Transparent"
+                     BorderBrush="#7D56EB"
+                     BorderThickness="0 0 0 2"
+                     Padding="15,0,15,0"
+                     VerticalContentAlignment="Center"
+                     Margin="0,0,0,25"/>
+
+            <TextBlock Text="Уровень" 
+                       FontFamily="{DynamicResource ManropeMedium}" 
+                       FontSize="18" 
+                       Foreground="#7D56EB"
+                       Margin="0,10,0,5"/>
+            <ComboBox x:Name="cmbLevel"                    
+                      Width="700"
+                      Height="50"
+                      FontSize="18"
+                      FontFamily="{DynamicResource ManropeRegular}"
+                      BorderBrush="#7D56EB"
+                      BorderThickness="0 0 0 2"
+                      Background="Transparent"
+                      Padding="15,0,15,0"
+                      VerticalContentAlignment="Center"
+                      Margin="0,0,0,25"
+                      DisplayMemberPath="LevelName"
+                      SelectedValuePath="IdLevel"/>
+
+            <TextBlock Text="Текст правила" 
+                       FontFamily="{DynamicResource ManropeMedium}" 
+                       FontSize="18" 
+                       Foreground="#7D56EB"
+                       Margin="0,10,0,5"/>
+            <TextBox x:Name="tbRuleText"                    
+                     Width="700"
+                     Height="100"
+                     FontSize="18"
+                     FontFamily="{DynamicResource ManropeRegular}"
+                     Background="Transparent"
+                     BorderBrush="#7D56EB"
+                     BorderThickness="0 0 0 2"
+                     Padding="15,0,15,0"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     Margin="0,0,0,20"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,120">
+            <Button x:Name="btnSave" 
+                    Content="Сохранить" 
+                    Width="200" 
+                    Height="50"
+                    Background="#7D56EB"
+                    Foreground="White"
+                    FontSize="28"
+                    FontWeight="Bold"
+                    FontFamily="{DynamicResource BloggerMedium}"
+                    Click="btnSave_Click"
+                    Cursor="Hand"
+                    Margin="0,0,30,0"
+                    BorderThickness="0">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="25"
+                                BorderThickness="0">
+                            <ContentPresenter Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button x:Name="btnCancel" 
+                    Content="Отмена" 
+                    Width="200" 
+                    Height="50"
+                    Background="#D2C4FB"
+                    Foreground="#7D56EB"
+                    FontSize="28"
+                    FontWeight="Bold"
+                    FontFamily="{DynamicResource BloggerMedium}"
+                    Click="btnCancel_Click"
+                    Cursor="Hand"
+                    BorderThickness="0">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="25"
+                                BorderThickness="0">
+                            <ContentPresenter Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

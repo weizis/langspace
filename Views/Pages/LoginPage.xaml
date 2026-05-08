@@ -1,0 +1,114 @@
+﻿<Page x:Class="LangSpace.Views.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:LangSpace.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="700"
+      Title="LoginPage"
+      Background="#F5F5F5"
+      FontFamily="{DynamicResource ManropeRegular}">
+
+    <Grid Margin="30">
+        <StackPanel HorizontalAlignment="Center" Width="500">
+            <Image Source="/Images/LangSpace.png"
+                   Width="500" 
+                   Height="200" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,20"/>
+            <StackPanel Margin="0,0,0,20">
+                <Grid Margin="0,0,0,20">
+                    <TextBox x:Name="txtUsername"
+                             Width="430"
+                             materialDesign:HintAssist.Hint="Логин"
+                             materialDesign:HintAssist.Foreground="#4300FF"
+                             materialDesign:HintAssist.Background="Transparent"
+                             materialDesign:TextFieldAssist.UnderlineBrush="#4807FF"
+                             FontSize="32"
+                             FontFamily="{DynamicResource ManropeRegular}"
+                             Foreground="#2D3436"
+                             Height="70"
+                             VerticalContentAlignment="Center"
+                             Padding="15,5"
+                             BorderBrush="#4807FF"
+                             BorderThickness="0 0 0 2"
+                             CaretBrush="#4807FF"
+                             HorizontalAlignment="Center"/>
+                </Grid>
+
+                <Grid Margin="0,0,0,15">
+                    <PasswordBox x:Name="txtPassword"
+                                 Width="430"
+                                 materialDesign:HintAssist.Hint="Пароль"
+                                 materialDesign:HintAssist.Foreground="#4300FF"
+                                 materialDesign:HintAssist.Background="Transparent"
+                                 materialDesign:TextFieldAssist.UnderlineBrush="#4807FF"
+                                 FontSize="32"
+                                 FontFamily="{DynamicResource ManropeRegular}"
+                                 Foreground="#2D3436"
+                                 Height="70"
+                                 VerticalContentAlignment="Center"
+                                 Padding="15,5"
+                                 BorderBrush="#4807FF"
+                                 BorderThickness="0 0 0 2"
+                                 CaretBrush="#4807FF"
+                                 HorizontalAlignment="Center"/>
+                </Grid>
+                <Button x:Name="btnLogin" Content="Войти"
+                       Height="70" Click="btnLogin_Click"
+                       Width="430"
+                       Background="#4807FF"
+                       Foreground="White"
+                       FontSize="44"
+                       FontFamily="{DynamicResource BloggerBold}"
+                       Margin="0,80,0,0"
+                       HorizontalAlignment="Center"
+                       Padding="0,0,0,5"
+                     
+                    Style="{StaticResource RoundedMaterialDesignRaisedButton}"/>
+            </StackPanel>
+            <Button x:Name="btnRegister" 
+                   Content="Создать аккаунт"
+                   Height="70" Click="btnRegister_Click"
+                   Width="430" 
+                   Background="#D2C4FB"
+                   Foreground="#7D56EB"
+                   FontSize="36"
+                   FontFamily="{DynamicResource BloggerBold}"
+                   Margin="0,10"
+                   HorizontalAlignment="Center"
+                   Padding="0,0,0,5"
+                Style="{StaticResource RoundedMaterialDesignRaisedButton}"/>
+            <StackPanel Margin="0,40,0,10"
+                       HorizontalAlignment="Center"
+                       Width="430">
+                <Image Source="/Images/handshake.png" 
+                       Width="70" 
+                       Margin="0,0,0,15" 
+                       HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Copyright"
+                                            Width="24"
+                                            Height="24"
+                                            Foreground="#35168C"
+                                            VerticalAlignment="Center"/>
+                    <TextBlock Text=" 2026 LangSpace" 
+                              FontFamily="{DynamicResource ManropeRegular}"
+                              Foreground="#35168C"
+                              FontSize="24"
+                              VerticalAlignment="Center"
+                              Margin="5,0,0,0"/>
+                </StackPanel>
+                <TextBlock Text="Михеева А.В. 9ПО-32" 
+                          FontFamily="{DynamicResource ManropeRegular}"
+                          Foreground="#35168C"
+                          FontSize="24"
+                          HorizontalAlignment="Center"
+                          Margin="0,10,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

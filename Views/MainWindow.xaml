@@ -1,0 +1,220 @@
+﻿<Window x:Class="LangSpace.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:LangSpace.Views"
+        xmlns:pages="clr-namespace:LangSpace.Views.Pages"
+        mc:Ignorable="d"
+        Title="LangSpace" 
+        Width="1920"
+        Height="1050"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow"
+        AllowsTransparency="False"
+        Background="White">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="380"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#643BD7" Offset="0.0"/>
+                    <GradientStop Color="#8F6BFF" Offset="0.7"/>
+                    <GradientStop Color="#B69EFF" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel Margin="30,30,20,30" VerticalAlignment="Stretch">
+                <Image Source="/Images/logo_white.png" 
+                       Width="250" 
+                       Height="90" 
+                       Margin="0,20,0,20"
+                       HorizontalAlignment="Center"/>
+                <StackPanel Margin="0,7,0,20">
+                    <Border x:Name="navAdmin" 
+            CornerRadius="15" 
+            Padding="15,12" 
+            Margin="0,5"
+            Background="Transparent"
+            MouseLeftButtonUp="navAdmin_Click"
+            Visibility="Collapsed">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="/Images/admin.png" Width="28" Height="28"/>
+                            <TextBlock Grid.Column="1" 
+                   Text="Админ панель" 
+                   FontFamily="{DynamicResource ManropeBold}" 
+                   FontSize="28" 
+                   Foreground="White" 
+                   Margin="15,0,0,0"
+                   VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <Border x:Name="navHome" 
+                            CornerRadius="15" 
+                            Padding="15,12" 
+                            Margin="0,5"
+                            Background="Transparent"
+                            MouseLeftButtonUp="navHome_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="/Images/home.png" Width="28" Height="28"/>
+                            <TextBlock Grid.Column="1" 
+                                       Text="Главная" 
+                                       FontFamily="{DynamicResource ManropeBold}" 
+                                       FontSize="28" 
+                                       Foreground="White" 
+                                       Margin="15,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <Border x:Name="navCollections" 
+                            CornerRadius="15" 
+                            Padding="15,12" 
+                            Margin="0,5"
+                            Background="Transparent"
+                            MouseLeftButtonUp="navCollections_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="/Images/collection.png" Width="28" Height="28"/>
+                            <TextBlock Grid.Column="1" 
+                                       Text="Мои карточки" 
+                                       FontFamily="{DynamicResource ManropeBold}" 
+                                       FontSize="28" 
+                                       Foreground="White" 
+                                       Margin="15,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <Border x:Name="navGrammar" 
+                            CornerRadius="15" 
+                            Padding="15,12" 
+                            Margin="0,5"
+                            Background="Transparent"
+                            MouseLeftButtonUp="navGrammar_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="/Images/book.png" Width="28" Height="28"/>
+                            <TextBlock Grid.Column="1" 
+                                       Text="Грамматика" 
+                                       FontFamily="{DynamicResource ManropeBold}" 
+                                       FontSize="28" 
+                                       Foreground="White" 
+                                       Margin="15,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <Border x:Name="navWorkspace" 
+                            CornerRadius="15" 
+                            Padding="15,12" 
+                            Margin="0,5"
+                            Background="Transparent"
+                            MouseLeftButtonUp="navWorkspace_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="/Images/writing-tool.png" Width="28" Height="28"/>
+                            <TextBlock Grid.Column="1" 
+                                       Text="Рабочее пространство" 
+                                       FontFamily="{DynamicResource ManropeBold}" 
+                                       FontSize="28" 
+                                       Foreground="White" 
+                                       Margin="15,0,0,0"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap"/>
+                        </Grid>
+                    </Border>
+                    <Border x:Name="navStatistics" 
+                            CornerRadius="15" 
+                            Padding="15,12" 
+                            Margin="0,5"
+                            Background="Transparent"
+                            MouseLeftButtonUp="navStatistics_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="/Images/stats.png" Width="28" Height="28"/>
+                            <TextBlock Grid.Column="1" 
+                                       Text="Статистика" 
+                                       FontFamily="{DynamicResource ManropeBold}" 
+                                       FontSize="28" 
+                                       Foreground="White" 
+                                       Margin="15,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <Border x:Name="navSettings" 
+                            CornerRadius="15" 
+                            Padding="15,12" 
+                            Margin="0,5"
+                            Background="Transparent"
+                            MouseLeftButtonUp="navSettings_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="/Images/settings.png" Width="28" Height="28"/>
+                            <TextBlock Grid.Column="1" 
+                                       Text="Настройки" 
+                                       FontFamily="{DynamicResource ManropeBold}" 
+                                       FontSize="28" 
+                                       Foreground="White" 
+                                       Margin="15,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <Border x:Name="navExit" 
+                            CornerRadius="15" 
+                            Padding="15,12" 
+                            Margin="0,5"
+                            Background="Transparent"
+                            MouseLeftButtonUp="navExit_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="/Images/log-out.png" Width="28" Height="28"/>
+                            <TextBlock Grid.Column="1" 
+                                       Text="Выход" 
+                                       FontFamily="{DynamicResource ManropeBold}" 
+                                       FontSize="28" 
+                                       Foreground="White" 
+                                       Margin="15,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+
+        </Border>
+
+        <Frame x:Name="MainFrame" 
+               Grid.Column="1"
+               NavigationUIVisibility="Hidden"
+               JournalOwnership="OwnsJournal"
+               Background="#F5F5F5"/>
+    </Grid>
+</Window>
