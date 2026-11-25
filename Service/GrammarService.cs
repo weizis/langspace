@@ -89,6 +89,7 @@ namespace LangSpace.Service
         }
         public bool UpdateRule(GrammarRule rule)
         {
+            if (UserSession.CurrentUser?.IdRole != 2) return false;
             try
             {
                 using (var context = new LangSpaceContext())
@@ -154,6 +155,7 @@ namespace LangSpace.Service
 
         public bool CreateRule(GrammarRule rule)
         {
+            if (UserSession.CurrentUser?.IdRole != 2) return false;
             try
             {
                 using (var context = new LangSpaceContext())
@@ -171,6 +173,7 @@ namespace LangSpace.Service
         }
         public bool DeleteRule(int ruleId)
         {
+            if (UserSession.CurrentUser?.IdRole != 2) return false;
             try
             {
                 using (var context = new LangSpaceContext())
