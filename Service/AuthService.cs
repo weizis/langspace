@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using LangSpace.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace LangSpace.Service
 {
@@ -37,18 +38,24 @@ namespace LangSpace.Service
                     .FirstOrDefault(u => u.Username == username);
                     if (foundUser != null)
                     {
-                        if (Verification.VerifySHA512Hash(password, foundUser.PasswordHash))
+                        var verification = Verification.VerifyPassword(foundUser, password);
+                        if (verification != PasswordVerificationResult.Failed)
                         {
+                            if (verification == PasswordVerificationResult.SuccessRehashNeeded)
+                            {
+                                foundUser.PasswordHash = Verification.HashPassword(password);
+                                context.SaveChanges();
+                            }
                             user = foundUser;
                         }
                         else
                         {
-                            MessageBox.Show("Неверный пароль");
+                            MessageBox.Show("Неверный логин или пароль");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Нет такого пользователя");
+                        MessageBox.Show("Неверный логин или пароль");
                     }
                 }
                 
@@ -108,7 +115,7 @@ namespace LangSpace.Service
                     {
                         Username = username,
                         Email = email,
-                        PasswordHash = Verification.GetSHA512Hash(password),
+                        PasswordHash = Verification.HashPassword(password),
                         RegistrationDate = DateOnly.FromDateTime(DateTime.Now),
                         IdRole = defaultRole.IdRole
                     };
