@@ -176,6 +176,7 @@ namespace LangSpace.Service
                         MessageBox.Show("Пользователь не найден");
                         return false;
                     }
+                    using var transaction = context.Database.BeginTransaction();
                     foreach (var note in user.Notes.ToList())
                     {
                         if (note.Resources != null && note.Resources.Any())
@@ -192,11 +193,15 @@ namespace LangSpace.Service
                     var userCards = context.Cards.Where(c => c.IdUser == userId).ToList();
                     foreach (var card in userCards)
                     {
-                        card.IdUser = null;
+                        if (card.IsPrivate)
+                            context.Cards.Remove(card);
+                        else
+                            card.IdUser = null;
                     }
                     context.SaveChanges();
                     context.Users.Remove(user);
                     context.SaveChanges();
+                    transaction.Commit();
 
                     return true;
                 }
