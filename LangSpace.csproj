@@ -90,4 +90,9 @@
     <Resource Include="Images\writing-tool.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="LangSpace.Core/**/*.cs;LangSpace.Infrastructure/**/*.cs" />
+    <ProjectReference Include="LangSpace.Core/LangSpace.Core.csproj" />
+    <ProjectReference Include="LangSpace.Infrastructure/LangSpace.Infrastructure.csproj" />
+  </ItemGroup>
 </Project>

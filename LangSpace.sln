@@ -5,12 +5,24 @@ VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangSpace", "LangSpace.csproj", "{B3899906-9454-4042-B5E1-0627246A3B14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangSpace.Core", "LangSpace.Core\LangSpace.Core.csproj", "{B3899906-9454-4042-B5E1-0627246A3B15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangSpace.Infrastructure", "LangSpace.Infrastructure\LangSpace.Infrastructure.csproj", "{B3899906-9454-4042-B5E1-0627246A3B16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3899906-9454-4042-B5E1-0627246A3B15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3899906-9454-4042-B5E1-0627246A3B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3899906-9454-4042-B5E1-0627246A3B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3899906-9454-4042-B5E1-0627246A3B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3899906-9454-4042-B5E1-0627246A3B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3899906-9454-4042-B5E1-0627246A3B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3899906-9454-4042-B5E1-0627246A3B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3899906-9454-4042-B5E1-0627246A3B16}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B3899906-9454-4042-B5E1-0627246A3B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B3899906-9454-4042-B5E1-0627246A3B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3899906-9454-4042-B5E1-0627246A3B14}.Release|Any CPU.ActiveCfg = Release|Any CPU

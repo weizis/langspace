@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using LangSpace.Views;
+
 
 namespace LangSpace.Models;
 
@@ -44,5 +44,5 @@ public partial class User
   
     public virtual ICollection<UserLanguage> UserLanguages { get; set; } = new List<UserLanguage>();
     public virtual ICollection<TestResult> TestResults { get; set; } = new List<TestResult>();
-    public bool IsTeacher => LoginWindow.currentUser?.IdRole == 2;
+    public bool IsTeacher => UserSession.CurrentUser?.IdRole == 2;
 }

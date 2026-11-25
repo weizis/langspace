@@ -22,7 +22,7 @@ namespace LangSpace.Views
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public static User? currentUser { get; set; } = null;
+        public static User? currentUser { get => UserSession.CurrentUser; set => UserSession.CurrentUser = value; }
         public LoginWindow()
         {
             InitializeComponent();

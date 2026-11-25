@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
-using LangSpace.Views;
+
 
 namespace LangSpace.Models;
 
@@ -26,7 +26,7 @@ public partial class Card : INotifyPropertyChanged
     {
         get
         {
-            var currentUser = LoginWindow.currentUser;
+            var currentUser = UserSession.CurrentUser;
             if (currentUser == null) return false;
             if (IdUser == currentUser.IdUser) return true;
             if (currentUser.IdRole == 2) return true;
