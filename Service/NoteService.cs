@@ -23,6 +23,7 @@ namespace LangSpace.Service
 
         public List<Note> GetNotesByUser(int userId)
         {
+            if (UserSession.CurrentUser?.IdUser != userId) return new List<Note>();
             using (var context = new LangSpaceContext())
             {
                 return context.Notes
@@ -82,6 +83,7 @@ namespace LangSpace.Service
 
         public bool CreateNote(Note note, string sourceFilePath, string resourceType)
         {
+            if (UserSession.CurrentUser?.IdUser != note.IdUser) return false;
             try
             {
                 using (var context = new LangSpaceContext())
@@ -120,6 +122,7 @@ namespace LangSpace.Service
 
         public List<Note> GetNotesByFilter(int userId, string filter)
         {
+            if (UserSession.CurrentUser?.IdUser != userId) return new List<Note>();
             using (var context = new LangSpaceContext())
             {
                 var notes = context.Notes
@@ -151,7 +154,7 @@ namespace LangSpace.Service
                         .Include(n => n.Resources)
                         .FirstOrDefault(n => n.IdNote == noteId);
 
-                    if (note != null)
+                    if (note != null && UserSession.CurrentUser?.IdUser == note.IdUser)
                     {
                         if (note.Resources != null && note.Resources.Any())
                         {
@@ -188,7 +191,7 @@ namespace LangSpace.Service
                         .Include(n => n.Resources)
                         .FirstOrDefault(n => n.IdNote == note.IdNote);
 
-                    if (existingNote == null)
+                    if (existingNote == null || UserSession.CurrentUser?.IdUser != existingNote.IdUser)
                     {
                         MessageBox.Show("Заметка не найдена");
                         return false;
