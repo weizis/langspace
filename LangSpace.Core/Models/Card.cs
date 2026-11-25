@@ -29,7 +29,7 @@ public partial class Card : INotifyPropertyChanged
             var currentUser = UserSession.CurrentUser;
             if (currentUser == null) return false;
             if (IdUser == currentUser.IdUser) return true;
-            if (currentUser.IdRole == 2) return true;
+            if (!IsPrivate && currentUser.IdRole == 2) return true;
 
             return false;
         }
