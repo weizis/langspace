@@ -219,6 +219,7 @@ namespace LangSpace.Service
         }
         public User GetUserById(int userId)
         {
+            if (UserSession.CurrentUser is not { } actor || (actor.IdRole != 1 && actor.IdUser != userId)) return null;
             using (var context = new LangSpaceContext())
             {
                 return context.Users
