@@ -34,6 +34,7 @@ namespace LangSpace.Service
 
         public bool CreateUser(User user)
         {
+            if (UserSession.CurrentUser?.IdRole != 1) return false;
             try
             {
                 using (var context = new LangSpaceContext())
@@ -51,6 +52,7 @@ namespace LangSpace.Service
         }
         public bool UpdateUserProfile(User user, string newPassword = null)
         {
+            if (UserSession.CurrentUser?.IdUser != user.IdUser) return false;
             try
             {
                 using (var context = new LangSpaceContext())
@@ -88,6 +90,7 @@ namespace LangSpace.Service
         }
         public List<User> GetAllUsers()
         {
+            if (UserSession.CurrentUser?.IdRole != 1) return new List<User>();
             using (var context = new LangSpaceContext())
             {
                 return context.Users
@@ -105,6 +108,7 @@ namespace LangSpace.Service
         }
         public bool ChangeUserRole(int userId, int newRoleId)
         {
+            if (UserSession.CurrentUser?.IdRole != 1) return false;
             try
             {
                 using (var context = new LangSpaceContext())
@@ -129,6 +133,7 @@ namespace LangSpace.Service
         }
         public bool ResetPassword(int userId, string newPassword)
         {
+            if (UserSession.CurrentUser?.IdRole != 1) return false;
             try
             {
                 using (var context = new LangSpaceContext())
@@ -153,6 +158,7 @@ namespace LangSpace.Service
         }
         public bool DeleteUser(int userId)
         {
+            if (UserSession.CurrentUser?.IdRole != 1) return false;
             try
             {
                 using (var context = new LangSpaceContext())
