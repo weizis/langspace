@@ -8,8 +8,8 @@ BEGIN
 END $$;
 
 UPDATE users
-SET password_hash = 'AQAAAAIAAYagAAAAELWW82JN2iifu7mQ2FueVHECo/MisjE039HYJwqDmZgoGfd9VpUJroMB+xS91qaTOQ=='
-WHERE username IN ('demo_admin','demo_tutor','demo_student','demo_student2','demo_student3','demo_student4','demo_student5','demo_student6','demo_student7','demo_student8')
+SET password_hash = 'AQAAAAIAAYagAAAAEEctz3MwxfptkGSHVDY/3gbfWfSDhIfqaL+WhXQUrf5phBmRjWHD0wfWiYgjHYBzyA=='
+WHERE left(username, 5) = 'demo_'
 AND email = username || '@example.invalid'
 AND password_hash = 'DISABLED_PENDING_AUTH_REVIEW';
 
