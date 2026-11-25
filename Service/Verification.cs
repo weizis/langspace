@@ -1,36 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Text;
+using LangSpace.Models;
+using Microsoft.AspNetCore.Identity;
 
-namespace LangSpace.Service
+namespace LangSpace.Service;
+
+internal static class Verification
 {
-    class Verification
+    private static readonly PasswordHasher<User> Hasher = new();
+
+    public static string HashPassword(string password)
+        => Hasher.HashPassword(new User(), password);
+
+    public static PasswordVerificationResult VerifyPassword(User user, string password)
     {
-        public static string GetSHA512Hash(string input)
+        var hash = user.PasswordHash;
+        if (string.IsNullOrWhiteSpace(hash))
+            return PasswordVerificationResult.Failed;
+
+        if (hash.Length == 128 && hash.All(Uri.IsHexDigit))
         {
-            SHA512CryptoServiceProvider SHA512Hasher = new SHA512CryptoServiceProvider();
-            byte[] data = SHA512Hasher.ComputeHash(Encoding.Default.GetBytes(input));
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < data.Length; i++) {
-                stringBuilder.Append(data[i].ToString("x2"));
-            }
-            return stringBuilder.ToString();
+            var actual = SHA512.HashData(Encoding.UTF8.GetBytes(password));
+            return CryptographicOperations.FixedTimeEquals(actual, Convert.FromHexString(hash))
+                ? PasswordVerificationResult.SuccessRehashNeeded
+                : PasswordVerificationResult.Failed;
         }
-        public static bool VerifySHA512Hash(string input, string hash)
+
+        try
         {
-            string hashOfInput = GetSHA512Hash(input);
-            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-            if (0 == comparer.Compare(hashOfInput, hash))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Hasher.VerifyHashedPassword(user, hash, password);
+        }
+        catch (FormatException)
+        {
+            return PasswordVerificationResult.Failed;
         }
     }
+
+    public static string GetSHA512Hash(string input) => HashPassword(input);
+
+    public static bool VerifySHA512Hash(string input, string hash)
+        => VerifyPassword(new User { PasswordHash = hash }, input) != PasswordVerificationResult.Failed;
 }
