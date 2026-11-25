@@ -29,7 +29,7 @@ namespace LangSpace.Service
 
         public string HashPassword(string password)
         {
-            return Verification.GetSHA512Hash(password);
+            return Verification.HashPassword(password);
         }
 
         public bool CreateUser(User user)
