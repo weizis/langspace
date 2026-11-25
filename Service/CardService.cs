@@ -11,6 +11,12 @@ namespace LangSpace.Service
 {
     public class CardService
     {
+        private static bool CanEdit(Card card)
+        {
+            var actor = UserSession.CurrentUser;
+            return actor != null && (card.IdUser == actor.IdUser || (!card.IsPrivate && actor.IdRole == 2));
+        }
+
         public List<Card> GetAllCardsByUserLevel(int userId, int languageId = 1)
         {
             var levelService = new LevelTestService();
@@ -76,6 +82,7 @@ namespace LangSpace.Service
         }
         public bool CreateCard(Card card, int userId)
         {
+            if (UserSession.CurrentUser?.IdUser != userId) return false;
             try
             {
                 using (var context = new LangSpaceContext())
@@ -99,7 +106,7 @@ namespace LangSpace.Service
                 using (var context = new LangSpaceContext())
                 {
                     var existingCard = context.Cards.Find(card.IdCard);
-                    if (existingCard == null)
+                    if (existingCard == null || !CanEdit(existingCard))
                     {
                         MessageBox.Show($"Карточка с ID {card.IdCard} не найдена в БД!");
                         return false;
@@ -141,7 +148,7 @@ namespace LangSpace.Service
                     var card = context.Cards
                         .FirstOrDefault(c => c.IdCard == cardId);
 
-                    if (card != null)
+                    if (card != null && CanEdit(card))
                     {
                         context.Cards.Remove(card);
                         context.SaveChanges();
