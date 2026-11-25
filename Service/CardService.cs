@@ -19,6 +19,7 @@ namespace LangSpace.Service
 
         public List<Card> GetAllCardsByUserLevel(int userId, int languageId = 1)
         {
+            if (UserSession.CurrentUser?.IdUser != userId) return new List<Card>();
             var levelService = new LevelTestService();
             string userLevel = levelService.GetUserLevel(userId, languageId);
 
@@ -41,6 +42,7 @@ namespace LangSpace.Service
         }   
         public List<Card> GetCardsByThemeAndLevel(int themeId, int userId, int languageId = 1)
         {
+            if (UserSession.CurrentUser?.IdUser != userId) return new List<Card>();
             var levelService = new LevelTestService();
             string userLevel = levelService.GetUserLevel(userId, languageId);
 
@@ -64,6 +66,7 @@ namespace LangSpace.Service
         }
         public int CountCardsByThemeAndLevel(int themeId, int userId, int languageId = 1)
         {
+            if (UserSession.CurrentUser?.IdUser != userId) return 0;
             var levelService = new LevelTestService();
             string userLevel = levelService.GetUserLevel(userId, languageId);
 
@@ -184,6 +187,7 @@ namespace LangSpace.Service
        
         public List<Card> SearchCardsByLevel(string searchText, int userId, int languageId = 1)
         {
+            if (UserSession.CurrentUser?.IdUser != userId) return new List<Card>();
             var levelService = new LevelTestService();
             string userLevel = levelService.GetUserLevel(userId, languageId);
 
