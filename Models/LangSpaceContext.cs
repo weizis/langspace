@@ -33,7 +33,16 @@ public partial class LangSpaceContext : DbContext
     public virtual DbSet<GrammarQuestion> GrammarQuestions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=localhost;Database=LangSpace;Username=postgres;Password=minion");
+    {
+        if (optionsBuilder.IsConfigured)
+            return;
+
+        var connectionString = Environment.GetEnvironmentVariable("LANGSPACE_CONNECTION_STRING");
+        if (string.IsNullOrWhiteSpace(connectionString))
+            throw new InvalidOperationException("Set the LANGSPACE_CONNECTION_STRING environment variable before starting LangSpace.");
+
+        optionsBuilder.UseNpgsql(connectionString);
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
