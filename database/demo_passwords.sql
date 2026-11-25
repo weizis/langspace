@@ -8,7 +8,7 @@ BEGIN
 END $$;
 
 UPDATE users
-SET password_hash = 'AQAAAAIAAYagAAAAEEctz3MwxfptkGSHVDY/3gbfWfSDhIfqaL+WhXQUrf5phBmRjWHD0wfWiYgjHYBzyA=='
+SET password_hash = 'AQAAAAIAAYagAAAAEBI0VniQq83vEjRWeJCrze/+8lfj6tILjJopIr1jJMX0I4qAYs1VSpVVpXr8giNBFQ=='
 WHERE left(username, 5) = 'demo_'
 AND email = username || '@example.invalid'
 AND password_hash = 'DISABLED_PENDING_AUTH_REVIEW';
