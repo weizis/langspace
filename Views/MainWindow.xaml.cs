@@ -61,6 +61,7 @@ namespace LangSpace.Views
         }
         private void navAdmin_Click(object sender, MouseButtonEventArgs e)
         {
+            if (LoginWindow.currentUser?.IdRole != 1) return;
             MainFrame.Navigate(new AdminPanelPage());
             SetActiveNavItem(navAdmin);
         }
@@ -72,6 +73,7 @@ namespace LangSpace.Views
                                          MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
+                LoginWindow.currentUser = null;
                 LoginWindow loginWindow = new LoginWindow();
                 loginWindow.Show();
                 this.Close();
